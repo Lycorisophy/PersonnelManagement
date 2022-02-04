@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>PersonnelManagement</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>  
+        <error-code>400</error-code>  
+        <location>/common/exceptionError.jsp</location>   
+    </error-page>  
+    <error-page>  
+        <error-code>401</error-code>  
+       <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>402</error-code>  
+         <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>403</error-code>  
+        <location>/common/exceptionError.jsp</location>   
+    </error-page>  
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>405</error-code>  
+         <location>/common/exceptionError.jsp</location>   
+    </error-page>  
+    <error-page>  
+        <error-code>406</error-code>  
+         <location>/common/exceptionError.jsp</location>    
+    </error-page>  
+    <error-page>  
+        <error-code>407</error-code>  
+         <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>413</error-code>  
+        <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>414</error-code>  
+         <location>/common/exceptionError.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/common/exceptionError.jsp</location>   
+    </error-page>  
+   
+    <error-page>  
+        <exception-type>java.lang.Exception</exception-type>  
+         <location>/common/exceptionError.jsp</location>    
+</error-page>  
+</web-app>

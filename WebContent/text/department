@@ -1,0 +1,54 @@
+表名称：部门信息表（department）
+数据元素	数据采集方式	说明
+departmentID	自动生成,自增，1000-9999	主键，自动输入
+departmentName	人工采集	部门名称，唯一越是，不允许空值
+adminID	人工采集	主管人员ID，外键约束，允许空值
+notes	人工采集	备注信息，允许空值
+相关数据主要功能模块：部门管理
+
+
+@Table(tableName = "department")
+/*表名：department;
+内容：部门信息*/
+	
+	@Column(type = "int()" ,name = "departmentID" ,primaryKey = true ,defaultNull = false)
+	/*内容：部门编号;
+	*约束：主键;
+	*约束：不可修改;
+	约束：自增(1000,+1)*/
+	
+	@Column(type = "VARCHAR(50)" ,name = "departmentName",defaultNull = false)
+	/*内容：部门名称;
+	*约束：不能相同;
+	约束：非空*/
+	
+	@Column(type = "int()" ,name = "adminID")
+	/*内容：部门主管人员的编号;
+	*约束：外键;
+	约束：可以为空*/
+	
+	@Column(type = "VARCHAR(50)", name = "notes")
+	/*内容：备注信息;
+	*约束：无;
+	规范：参照公司规范*/
+
+/*SQLServer语句参照
+	CREATE TABLE [dbo].[department](
+	[departmentID] [int] IDENTITY(1000,1) NOT NULL,
+	[departmentName] [varchar](50) NOT NULL,
+	[adminID] [int] NULL,
+	[notes] [varchar](50) NULL,
+ CONSTRAINT [PK_department] PRIMARY KEY CLUSTERED 
+(
+	[departmentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[department]  WITH CHECK ADD  CONSTRAINT [FK_department_user] FOREIGN KEY([adminID])
+REFERENCES [dbo].[user] ([id])
+GO
+
+ALTER TABLE [dbo].[department] CHECK CONSTRAINT [FK_department_user]
+GO
+*/	

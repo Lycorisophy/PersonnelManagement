@@ -1,0 +1,63 @@
+表名称：员工绩效表（performance）
+数据元素	数据采集方式	说明
+id	自动生成,自增, 10000-	主键，自动输入
+userID	手动输入	外键约束
+startTime	手动输入	开始时间，允许空值
+endTime	手动输入	结束时间，允许空值
+train	手动输入	允许空值
+createTime	自动生成	信息创建时间
+notes	手动输入	备注信息，允许空值
+相关数据主要功能模块：员工培训管理
+
+
+@Table(tableName = "train")
+/*表名：rain;
+内容：员工培训信息*/
+
+	@Column(type = "int(30)" ,field = "id" ,primaryKey = true ,defaultNull = false)
+	private Integer id;        //主键，采用UUID
+	
+	@Column(type = "int(30)" ,field = "userID"  ,defaultNull = false)
+	private Integer userID;        //外键
+	
+	@Column(type = "datetime", field = "startTime")
+	private String startTime;//开始时间
+	
+	@Column(type = "datetime", field = "endTime")
+	private String endTime;//结束时间
+	
+	@Column(type = "VARCHAR(50)", field = "trian")
+	private String train;//培训内容
+	
+	@Column(type = "datetime", field = "createTime")
+	private String createTime;//创建时间
+	
+	@Column(type = "VARCHAR(50)", field = "notes")
+	private String notes; //备注
+	
+/*SQLServer语句参照
+CREATE TABLE [dbo].[train](
+	[id] [int] IDENTITY(10000,1) NOT NULL,
+	[userID] [int] NOT NULL,
+	[startTime] [date] NULL,
+	[endTime] [date] NULL,
+	[train] [varchar](50) NULL,
+	[createTime] [datetime] NOT NULL,
+	[notes] [varchar](50) NULL,
+ CONSTRAINT [PK_train] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[train] ADD  CONSTRAINT [DF_train_createTime]  DEFAULT (getdate()) FOR [createTime]
+GO
+
+ALTER TABLE [dbo].[train]  WITH CHECK ADD  CONSTRAINT [FK_train_user] FOREIGN KEY([userID])
+REFERENCES [dbo].[user] ([id])
+GO
+
+ALTER TABLE [dbo].[train] CHECK CONSTRAINT [FK_train_user]
+GO
+*/	

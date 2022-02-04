@@ -1,0 +1,87 @@
+表名称：应聘信息表（employee）
+数据元素	数据采集方式	说明
+id	自动生成,自增, 10000-	主键，自动输入
+name	手动输入	员工真实姓名，不允许空值
+gender	手动输入	性别，允许空值
+birthday	手动输入	出生年份，允许空值
+nation	手动输入	允许空值
+faction	手动输入	允许空值
+idNumber	手动输入	身份证号码，允许空值
+experience	手动输入	工作经历，允许空值
+major	手动输入	专业，允许空值
+wannaPosition	手动输入	应聘职位，允许空值
+telephone	手动输入	联系电话，允许空值
+photo	手动输入	保存的照片（照片名称）,允许空值
+notes	手动输入	备注信息，允许空值
+isUser	手动输入	默认为0，不允许空值
+相关数据主要功能模块：添加用户模块，招聘管理模块
+
+
+@Table(tableName = "employee")
+/*表名：employee;
+内容：招聘信息*/
+
+	@Column(type = "int(30)" ,field = "id" ,primaryKey = true ,defaultNull = false)
+	private Integer id;        //主键，采用UUID
+	
+	@Column(type = "VARCHAR(50)", field = "name")
+	private String name;  //姓名
+	
+	@Column(type = "VARCHAR(50)", field = "gender")
+	private String gender;  
+	
+	@Column(type = "date", field = "birthday")
+	private String birthday;
+	
+	@Column(type = "VARCHAR(50)", field = "nation")
+	private String nation;  
+	
+	@Column(type = "VARCHAR(50)", field = "faction")
+	private String faction;  //民族
+	
+	@Column(type = "VARCHAR(50)", field = "idNumber")
+	private String idNumber;  //身份证号码
+	
+	@Column(type = "VARCHAR(50)", field = "experience")
+	private String experience;//经验
+	
+	@Column(type = "VARCHAR(50)", field = "majoy")
+	private String majoy;  //专业
+	
+	@Column(type = "VARCHAR(50)", field = "wannaPosition")
+	private String wannaPosition;//应聘职位
+	
+	@Column(type = "VARCHAR(50)", field = "telephone")
+	private String telephone; //电话
+	
+	@Column(type = "VARCHAR(50)", field = "photo")
+	private String photo; //头像
+	
+	@Column(type = "VARCHAR(50)", field = "notes")
+	private String notes; //备注
+
+/*SQLServer语句参照
+	CREATE TABLE [dbo].[employee](
+	[id] [int] IDENTITY(10000,1) NOT NULL,
+	[name] [varchar](50) NOT NULL,
+	[gender] [varchar](10) NULL,
+	[birthday] [date] NULL,
+	[nation] [varchar](50) NULL,
+	[faction] [varchar](50) NULL,
+	[idNumber] [varchar](50) NULL,
+	[experience] [varchar](50) NULL,
+	[majoy] [varchar](50) NULL,
+	[wannaPosition] [varchar](50) NULL,
+	[telephone] [varchar](50) NULL,
+	[photo] [varchar](50) NULL,
+	[notes] [varchar](50) NULL,
+ CONSTRAINT [PK__employee__3214EC2787F12D5A] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[employee] ADD  CONSTRAINT [DF_employee_gender]  DEFAULT ('不明') FOR [gender]
+GO
+*/	

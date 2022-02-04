@@ -1,0 +1,85 @@
+表名称：薪金表（wage）
+数据元素	数据采集方式	说明
+id	自动生成,自增，10000-	主键，自动输入
+userID	自动采集	外键约束
+createTime	自动采集	允许空值
+baseWage	人工采集	基本工资，允许空值
+performaceWage	人工采集	绩效奖金，允许空值
+cutWage	人工采集	扣除工资，允许空值
+payTime	人工采集	支付日期，允许空值
+notes	人工采集	备注信息，允许空值
+相关数据主要功能模块：薪金管理
+
+
+@Table(tableName = "wage")
+/*表名：wage;
+内容：员工薪金信息*/
+	@Column(type = "int(30)" ,field = "id" ,primaryKey = true ,defaultNull = false)
+	private Integer id;        //主键，采用UUID
+
+	@Column(type = "int(30)", field = "userID",defaultNull = false)
+	private Integer userID;  //用户ID
+
+	
+	@Column(type = "datetime", field = "createTime")
+	private String createTime;//创建时间
+
+
+	@Column(type = "int(30)", field = "baseWage")
+	private Integer baseWage;//基础工资 
+
+	@Column(type = "int(30)", field = "performanceWage")
+	private Integer performanceWage;//绩效工资
+	
+	@Column(type = "int(30)", field = "cutWage")
+	private Integer cutWage;//扣除工资
+	
+	
+	@Column(type = "date", field = "payTime")
+	private String payTime;//发工资时间
+	
+	@Column(type = "VARCHAR(50)", field = "notes")
+	private String notes; //备注
+
+/*SQLServer语句参照
+	CREATE TABLE [dbo].[wage](
+	[id] [int] IDENTITY(10000,1) NOT NULL,
+	[userID] [int] NOT NULL,
+	[createTime] [datetime] NOT NULL,
+	[baseWage] [int] NOT NULL,
+	[performanceWage] [int] NOT NULL,
+	[cutWage] [int] NOT NULL,
+	[payTime] [date] NULL,
+	[notes] [varchar](50) NULL,
+ CONSTRAINT [PK_wage] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[wage] ADD  CONSTRAINT [DF_wage_time]  DEFAULT (getdate()) FOR [createTime]
+GO
+
+ALTER TABLE [dbo].[wage] ADD  CONSTRAINT [DF_wage_baseWage]  DEFAULT ((0)) FOR [baseWage]
+GO
+
+ALTER TABLE [dbo].[wage] ADD  CONSTRAINT [DF_wage_performanceWage]  DEFAULT ((0)) FOR [performanceWage]
+GO
+
+ALTER TABLE [dbo].[wage] ADD  CONSTRAINT [DF_wage_cutWage]  DEFAULT ((0)) FOR [cutWage]
+GO
+
+ALTER TABLE [dbo].[wage] ADD  CONSTRAINT [DF_wage_payTime]  DEFAULT (getdate()) FOR [payTime]
+GO
+
+ALTER TABLE [dbo].[wage]  WITH CHECK ADD  CONSTRAINT [FK_wage_user] FOREIGN KEY([userID])
+REFERENCES [dbo].[user] ([id])
+GO
+
+ALTER TABLE [dbo].[wage] CHECK CONSTRAINT [FK_wage_user]
+GO
+*/
+
+
+	
